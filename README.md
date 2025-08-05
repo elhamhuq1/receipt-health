@@ -111,7 +111,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👥 Team
 
-- [Your Name] - Initial work - [GitHub Profile]
+- Elham Huq - Initial work - elhamhuq1
 
 ## 🙏 Acknowledgments
 
