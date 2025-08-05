@@ -1,5 +1,4 @@
 import React from 'react';
-import 'nativewind/tailwind.css';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
@@ -64,7 +63,6 @@ export default function App() {
   );
 }
 
-// Traditional React Native styles as a fallback
 const styles = StyleSheet.create({
   container: {
     flex: 1,

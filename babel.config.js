@@ -2,6 +2,7 @@ module.exports = function (api) {
   api.cache(true);
   return {
     presets: ['babel-preset-expo'],
-    plugins: ['nativewind/babel'],
+    // Temporarily removing NativeWind plugin to isolate the issue
+    plugins: [],
   };
 };
