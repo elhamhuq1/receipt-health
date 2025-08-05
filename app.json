@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "temp-recipt-health",
-    "slug": "temp-recipt-health",
+    "name": "ReceiptHealth",
+    "slug": "receipt-health",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -13,7 +13,16 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.receiptHealth.app",
+      "buildNumber": "1.0.0",
+      "requireFullScreen": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "ReceiptHealth needs access to your camera to scan receipts",
+        "NSPhotoLibraryUsageDescription": "ReceiptHealth needs access to your photos to import receipt images",
+        "NSHealthShareUsageDescription": "ReceiptHealth needs access to your health data to provide personalized recommendations",
+        "NSHealthUpdateUsageDescription": "ReceiptHealth needs access to update health data for accurate tracking"
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -24,6 +33,16 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      "expo-camera",
+      "expo-image-picker",
+      [
+        "expo-health",
+        {
+          "isCameraPresent": true
+        }
+      ]
+    ]
   }
 }
