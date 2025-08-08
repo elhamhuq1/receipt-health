@@ -7,12 +7,33 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "prepare": "husky",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "test": "jest",
     "clean": "rm -rf node_modules && npm install"
+  },
+  "jest": {
+    "preset": "react-native",
+    "testEnvironment": "node",
+    "setupFiles": [
+      "<rootDir>/jest.setup.js",
+      "react-native/jest/setup"
+    ],
+    "setupFilesAfterEnv": [
+      "@testing-library/jest-native/extend-expect"
+    ],
+    "transform": {
+      "^.+\\.(js|jsx|ts|tsx)$": "babel-jest"
+    },
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/android/",
+      "/ios/"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!(react-native|@react-native|@react-navigation|react-native-safe-area-context|react-native-screens)/)"
+    ]
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^2.2.0",
@@ -20,6 +41,7 @@
     "@react-navigation/native": "^7.1.17",
     "@react-navigation/native-stack": "^7.3.24",
     "expo": "~53.0.20",
+    "expo-camera": "~15.0.16",
     "expo-status-bar": "~2.2.3",
     "nativewind": "^2.0.11",
     "postcss": "^8.4.23",
@@ -33,6 +55,10 @@
     "@babel/core": "^7.28.0",
     "@babel/eslint-parser": "^7.28.0",
     "@react-native-community/eslint-config": "^3.2.0",
+    "@testing-library/jest-native": "^5.4.3",
+    "@testing-library/react-native": "^13.2.2",
+    "@types/react": "~19.0.10",
+    "babel-jest": "^30.0.5",
     "eslint": "^8.57.1",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.3",
@@ -40,8 +66,12 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-native": "^5.0.0",
     "husky": "^9.1.7",
+    "jest": "^30.0.5",
+    "jest-expo": "^53.0.0",
     "lint-staged": "^16.1.4",
-    "prettier": "^3.6.2"
+    "prettier": "^3.6.2",
+    "react-test-renderer": "^19.0.0",
+    "typescript": "~5.8.3"
   },
   "private": true
 }

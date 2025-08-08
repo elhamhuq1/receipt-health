@@ -46,7 +46,6 @@ export const typography = {
     bold: '700',
   },
 };
-
 export default {
   colors,
   spacing,
