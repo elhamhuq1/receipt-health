@@ -1,6 +1,5 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Platform } from 'react-native';
 
 /**
  * @typedef {import('./types').HomeStackParamList} HomeStackParamList
@@ -12,6 +11,7 @@ import { Platform } from 'react-native';
 // Import screens for each feature area
 import HomeScreen from '../features/home/screens/HomeScreen';
 import CameraScreen from '../features/camera/screens/CameraScreen';
+import ReceiptAnalysisScreen from '../features/receipt-analysis/screens/ReceiptAnalysisScreen';
 import ReceiptHistoryScreen from '../features/receipt-history/screens/ReceiptHistoryScreen';
 import FitnessDashboardScreen from '../features/fitness-dashboard/screens/FitnessDashboardScreen';
 
@@ -73,9 +73,11 @@ const defaultStackOptions = {
 
 // Loading state wrapper for screen transitions
 const createScreenWithLoading = (ScreenComponent, screenName) => {
-  return React.memo(props => {
+  const WrappedComponent = React.memo(props => {
     return <ScreenComponent {...props} />;
   });
+  WrappedComponent.displayName = `ScreenWithLoading(${screenName})`;
+  return WrappedComponent;
 };
 
 // Screen options for different screen types
@@ -132,7 +134,11 @@ export const CameraStackNavigator = () => {
         component={createScreenWithLoading(CameraScreen, 'CameraMain')}
         options={getScreenOptions('main', 'Scan Receipt')}
       />
-      {/* Future screens like ReceiptAnalysisScreen will use slide transitions */}
+      <CameraStack.Screen
+        name="ReceiptAnalysis"
+        component={createScreenWithLoading(ReceiptAnalysisScreen, 'ReceiptAnalysis')}
+        options={getScreenOptions('detail', 'Receipt Analysis', { headerShown: true })}
+      />
     </CameraStack.Navigator>
   );
 };

@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Image, ActivityIndicator } from 'react-native';
 import { CameraView, useCameraPermissions } from 'expo-camera';
 import Button from '../../../shared/components/Button';
 
-const CameraScreen = () => {
+const CameraScreen = ({ navigation }) => {
   const cameraRef = useRef(null);
   const [permission, requestPermission] = useCameraPermissions();
   const [isCapturing, setIsCapturing] = useState(false);
@@ -61,6 +61,17 @@ const CameraScreen = () => {
           />
           <View style={styles.actionsRow}>
             <Button title="Retake" variant="outline" onPress={handleRetake} style={styles.action} />
+            <Button
+              title="Analyze"
+              variant="secondary"
+              onPress={() =>
+                navigation.navigate('ReceiptAnalysis', {
+                  imageUri: photoUri,
+                  timestamp: Date.now(),
+                })
+              }
+              style={styles.action}
+            />
           </View>
         </View>
       ) : (

@@ -24,7 +24,9 @@ describe('CameraScreen', () => {
   });
 
   it('captures a photo and shows preview', async () => {
-    const { getByText, queryByTestId, findByLabelText } = render(<CameraScreen />);
+    const { getByText, queryByTestId, findByLabelText } = render(
+      <CameraScreen navigation={{ navigate: jest.fn(), goBack: jest.fn() }} />,
+    );
 
     fireEvent.press(getByText('Capture'));
 
@@ -34,7 +36,9 @@ describe('CameraScreen', () => {
   });
 
   it('retakes after preview', async () => {
-    const { getByText, findByLabelText } = render(<CameraScreen />);
+    const { getByText, findByLabelText } = render(
+      <CameraScreen navigation={{ navigate: jest.fn(), goBack: jest.fn() }} />,
+    );
 
     fireEvent.press(getByText('Capture'));
     await findByLabelText('Captured photo preview');
